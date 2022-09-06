@@ -4,27 +4,9 @@
 create database larievini;
 use larievini;
 
-CREATE TABLE midia (
-titulo_midia varchar(100) not null,
-caminho_midia varchar(250),
-cod_midia int not null auto_increment unique PRIMARY KEY,
-cod_postagem int not null
-);
-
 CREATE TABLE tipo_usuario (
 cod_tipuser int not null auto_increment unique PRIMARY KEY,
 desc_tipuser varchar(250) not null
-);
-
-CREATE TABLE postagem (
-titulo_postagem varchar(100) not null,
-categoria varchar(100) not null,
-cod_postagem int not null auto_increment unique PRIMARY KEY,
-texto_postagem varchar(1000) not null,
-cod_usuario int not null,
-cod_ong int not null,
-FOREIGN KEY(cod_usuario) REFERENCES usuario (cod_usuario),
-FOREIGN KEY(cod_ong) REFERENCES ong (cod_ong)
 );
 
 CREATE TABLE usuario (
@@ -42,6 +24,24 @@ email_ong varchar(250) not null unique,
 telefone_ong varchar(14) not null unique,
 nome_ong varchar(100) not null unique,
 cod_ong int not null auto_increment unique PRIMARY KEY
+);
+
+CREATE TABLE postagem (
+titulo_postagem varchar(100) not null,
+categoria varchar(100) not null,
+cod_postagem int not null auto_increment unique PRIMARY KEY,
+texto_postagem varchar(1000) not null,
+cod_usuario int not null,
+cod_ong int not null,
+FOREIGN KEY(cod_usuario) REFERENCES usuario (cod_usuario),
+FOREIGN KEY(cod_ong) REFERENCES ong (cod_ong)
+);
+
+CREATE TABLE midia (
+titulo_midia varchar(100) not null,
+caminho_midia varchar(250),
+cod_midia int not null auto_increment unique PRIMARY KEY,
+cod_postagem int not null
 );
 
 CREATE TABLE curtir (
